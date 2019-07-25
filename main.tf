@@ -16,6 +16,7 @@ data "aws_availability_zones" "available" {
 resource "aws_security_group" "WebServerSG" {
   name          = "Web Server SG"
   description   = "Security group for the web servers"
+  vpc_id        = "${aws_vpc.main.id}"
 
   ingress {
     protocol    = "tcp"
@@ -28,7 +29,8 @@ resource "aws_security_group" "WebServerSG" {
 resource "aws_security_group" "ConfigServerSG" {
   name          = "Config Server SG"
   description   = "Security group for the web servers"
-
+  vpc_id        = "${aws_vpc.main.id}"
+  
   ingress {
     protocol    = "tcp"
     from_port   = 22
