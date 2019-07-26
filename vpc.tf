@@ -1,6 +1,18 @@
-#Create VPC and the IGW
+/*
+get a list of availability zones so you can restrict infrastructure to a region
+Will be useful as we're creating 2 sets of availability zone resources
+*/
+
+data "aws_availability_zones" "available" {
+  state = "available"
+}
+
+/*
+Now we can create VPC and the IGW
+*/
+
 resource "aws_vpc" "main" {
-  cidr_block  = "10.200.0.0/20"
+  cidr_block  = "${var.vpc_cidr_block}"
 
   tags = {
     Name = "VPC1"
@@ -16,8 +28,8 @@ resource "aws_internet_gateway" "gw" {
 }
 
 /*
-## Create Public and Private networking infrastructure for each availability zone. 
-## Values come in as variables from variables.tf
+Next create Public and Private networking infrastructure for each availability zone. 
+Values are variables from variables.tf
 */
 
 resource "aws_subnet" "public_subnet" {
