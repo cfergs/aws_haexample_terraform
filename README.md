@@ -1,7 +1,7 @@
 # aws_haexample_terraform
 Example of a AWS highly available setup over 2 availability zones. Please note NAT gateways are not part of the AWS free tier so this will cost a few cents to deploy.
 
-![Image]("/assets/haexample_diagram.jpg")
+![Image](assets/haexample_diagram.jpg)
 
 ### Usage
 #### Step 1 - Credentials
